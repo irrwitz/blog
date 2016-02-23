@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>A long Journey</title>
+  <subtitle>Writings</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://irrwitz.github.io/"/>
+  <updated>2016-02-23T19:35:30.000Z</updated>
+  <id>http://irrwitz.github.io/</id>
+  
+  <author>
+    <name>Joshy Cyriac</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NodeJS Native Libraries</title>
+    <link href="http://irrwitz.github.io/2016/02/22/nodejs-native-libraries/"/>
+    <id>http://irrwitz.github.io/2016/02/22/nodejs-native-libraries/</id>
+    <published>2016-02-22T15:56:47.000Z</published>
+    <updated>2016-02-23T19:35:30.000Z</updated>
+    
+    <content type="html">&lt;p&gt;I lost a day trying to find out what causes this error:&lt;br&gt;&lt;code&gt;error:06065064:digital envelope routines:EVP_DecryptFinal_ex:bad decrypt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The error was thrown when the server tried to parse a encrypted JS array. The application was running NodeJS version 0.12.7 and the generation was done with NodeJS version 4.2.1.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;First guess was that it is a runtime problem. So after running both with 0.12.7 the problem still existed. Google results poped up, showing there was a change between NodeJS 0.8 and 0.10, both version which I am not running.&lt;/p&gt;
+&lt;p&gt;As it turns out the library which we are using(&lt;a href=&quot;https://github.com/AF83/node-serializer&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;serializer&lt;/a&gt;) is using the &lt;code&gt;crypto&lt;/code&gt; module from NodeJS. This is compiled against the NodeJS installation. The solution was, that is not sufficient to run both version on 0.12.7 but also to remove the installed node modules and install them &lt;em&gt;new&lt;/em&gt; with version 0.12.7.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I lost a day trying to find out what causes this error:&lt;br&gt;&lt;code&gt;error:06065064:digital envelope routines:EVP_DecryptFinal_ex:bad decrypt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The error was thrown when the server tried to parse a encrypted JS array. The application was running NodeJS version 0.12.7 and the generation was done with NodeJS version 4.2.1.&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="nodejs crypto" scheme="http://irrwitz.github.io/tags/nodejs-crypto/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ELM mixing HTML</title>
+    <link href="http://irrwitz.github.io/2015/07/27/elm/"/>
+    <id>http://irrwitz.github.io/2015/07/27/elm/</id>
+    <published>2015-07-26T22:00:00.000Z</published>
+    <updated>2016-02-23T19:35:30.000Z</updated>
+    
+    <content type="html">&lt;p&gt;To have elm code inside of HTML you need to escape it&lt;/p&gt;
+&lt;figure class=&quot;highlight haskell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;import&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; Html exposing &lt;span class=&quot;container&quot;&gt;(&lt;span class=&quot;title&quot;&gt;li&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;text&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;ul&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;import&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; Html.Attributes exposing &lt;span class=&quot;container&quot;&gt;(&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&amp;#123;-|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Modified version of http://elm-lang.org/examples/unordered-list&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;title&quot;&gt;fruits&lt;/span&gt; = [&lt;span class=&quot;string&quot;&gt;&quot;apples&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         , &lt;span class=&quot;string&quot;&gt;&quot;oranges&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         , &lt;span class=&quot;string&quot;&gt;&quot;ananas&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         ]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;title&quot;&gt;main&lt;/span&gt; =&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  ul [&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;fruits-list&quot;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    (&lt;span class=&quot;type&quot;&gt;List&lt;/span&gt;.map (\fruit -&amp;gt; li [] [text fruit]) fruits)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;To have elm code inside of HTML you need to escape it&lt;/p&gt;
+&lt;figure class=&quot;highlight haskell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span clas
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JS Parameter</title>
+    <link href="http://irrwitz.github.io/2014/08/08/js/"/>
+    <id>http://irrwitz.github.io/2014/08/08/js/</id>
+    <published>2014-08-07T22:00:00.000Z</published>
+    <updated>2016-02-23T19:35:30.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Quite a elegant way to set a value if no parameter has been given.&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; counter = &amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;counter.setValue = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;value&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.counter = value || &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;counter.setValue(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;counter.setValue();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Quite a elegant way to set a value if no parameter has been given.&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Scala function definitions</title>
+    <link href="http://irrwitz.github.io/2014/08/05/start/"/>
+    <id>http://irrwitz.github.io/2014/08/05/start/</id>
+    <published>2014-08-04T22:00:00.000Z</published>
+    <updated>2016-02-23T19:35:30.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Equivalent definitions of a function from A to B in Scala.&lt;/p&gt;
+&lt;figure class=&quot;highlight scala&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// A =&amp;gt; B&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;[&lt;/span&gt;&lt;span class=&quot;type&quot;&gt;A&lt;/span&gt;, &lt;span class=&quot;type&quot;&gt;B&lt;/span&gt;](a: &lt;span class=&quot;type&quot;&gt;A&lt;/span&gt;): &lt;span class=&quot;type&quot;&gt;B&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// A =&amp;gt; B&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;[&lt;/span&gt;&lt;span class=&quot;type&quot;&gt;A&lt;/span&gt;, &lt;span class=&quot;type&quot;&gt;B&lt;/span&gt;]: &lt;span class=&quot;type&quot;&gt;A&lt;/span&gt; =&amp;gt; &lt;span class=&quot;type&quot;&gt;B&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Equivalent definitions of a function from A to B in Scala.&lt;/p&gt;
+&lt;figure class=&quot;highlight scala&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span c
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
