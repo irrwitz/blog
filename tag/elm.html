@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>A long journey - elm</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A long journey Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A long journey </a></h1>
+                <nav><ul>
+                    <li><a href="/category/programming.html">Programming</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/elm-mixing-html.html">ELM mixing HTML</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-07-27T00:00:00+02:00">
+                Published: Mon 27 July 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/joshy-cyriac.html">Joshy Cyriac</a>
+        </address>
+<p>In <a href="/category/programming.html">Programming</a>.</p>
+<p>tags: <a href="/tag/elm.html">elm</a> </p>
+</footer><!-- /.post-info --><p>To have elm code inside of HTML you need to escape it</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nn">Html</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">li</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">ul</span><span class="p">)</span>
+<span class="kr">import</span> <span class="nn">Html.Attributes</span> <span class="n">exposing</span> <span class="p">(</span><span class="kr">class</span><span class="p">)</span>
+
+
+<span class="cm">{-|</span>
+<span class="cm">  Modified version of http://elm-lang.org/examples/unordered-list</span>
+<span class="cm">-}</span>
+
+<span class="nf">fruits</span> <span class="ow">=</span> <span class="p">[</span><span class="s">&quot;apples&quot;</span>
+         <span class="p">,</span> <span class="s">&quot;oranges&quot;</span>
+         <span class="p">,</span> <span class="s">&quot;ananas&quot;</span>
+         <span class="p">]</span>
+
+<span class="nf">main</span> <span class="ow">=</span>
+  <span class="n">ul</span> <span class="p">[</span><span class="kr">class</span> <span class="s">&quot;fruits-list&quot;</span><span class="p">]</span>
+    <span class="p">(</span><span class="kt">List</span><span class="o">.</span><span class="n">map</span> <span class="p">(</span><span class="nf">\</span><span class="n">fruit</span> <span class="ow">-&gt;</span> <span class="n">li</span> <span class="kt">[]</span> <span class="p">[</span><span class="n">text</span> <span class="n">fruit</span><span class="p">])</span> <span class="n">fruits</span><span class="p">)</span>
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

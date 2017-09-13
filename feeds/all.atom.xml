@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>A long journey</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2017-09-13T00:00:00+02:00</updated><entry><title>Oracle python driver</title><link href="/oracle-python-driver.html" rel="alternate"></link><published>2017-09-13T00:00:00+02:00</published><updated>2017-09-13T00:00:00+02:00</updated><author><name>Joshy Cyriac</name></author><id>tag:None,2017-09-13:/oracle-python-driver.html</id><summary type="html">&lt;p&gt;Changing the running user of a systemd service stopped working. There were some
+lession to be learned:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;pip default install location is under %HOME%, so all installed libs needs
+ to be installed again&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;db connection failed with
+  &lt;code&gt;shell
+  cx_Oracle.DatabaseError: DPI-1047: Oracle Client library cannot be loaded: libclntsh.so: cannot …&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;Changing the running user of a systemd service stopped working. There were some
+lession to be learned:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;pip default install location is under %HOME%, so all installed libs needs
+ to be installed again&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;db connection failed with
+  &lt;code&gt;shell
+  cx_Oracle.DatabaseError: DPI-1047: Oracle Client library cannot be loaded: libclntsh.so: cannot open shared object file: No such file or director&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The previous user had in the .bashrc this snippet
+ &lt;code&gt;export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/oracle/12.1/client64/lib&lt;/code&gt;
+ Adding this to the new users .bashrc didn't help. Finally the solution was to
+ create a file under &lt;code&gt;/etc/ld.so.conf.d&lt;/code&gt; called &lt;code&gt;oracle.conf&lt;/code&gt; with the single
+ entry &lt;code&gt;/usr/lib/oracle/12.1/client64/lib&lt;/code&gt;. A &lt;code&gt;sudo ldconfig&lt;/code&gt; and sudo &lt;code&gt;ldconfig -v&lt;/code&gt;
+ verified that the shared libs are accessible. So db connection was up and
+ running again.&lt;/p&gt;</content><category term="python"></category><category term="oracle"></category></entry><entry><title>NodeJS Native Libraries</title><link href="/nodejs-native-libraries.html" rel="alternate"></link><published>2016-02-22T16:56:47+01:00</published><updated>2016-02-22T16:56:47+01:00</updated><author><name>Joshy Cyriac</name></author><id>tag:None,2016-02-22:/nodejs-native-libraries.html</id><summary type="html">&lt;p&gt;I lost a day trying to find out what causes this error:
+&lt;code&gt;error:06065064:digital envelope routines:EVP_DecryptFinal_ex:bad decrypt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The error was thrown when the server tried to parse a encrypted JS array. The application was running NodeJS version 0.12.7 and the generation was done with NodeJS …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I lost a day trying to find out what causes this error:
+&lt;code&gt;error:06065064:digital envelope routines:EVP_DecryptFinal_ex:bad decrypt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The error was thrown when the server tried to parse a encrypted JS array. The application was running NodeJS version 0.12.7 and the generation was done with NodeJS version 4.2.1.&lt;/p&gt;
+&lt;p&gt;First guess was that it is a runtime problem. So after running both with 0.12.7 the problem still existed. Google results poped up, showing there was a change between NodeJS 0.8 and 0.10, both version which I am not running.&lt;/p&gt;
+&lt;p&gt;As it turns out the library which we are using(&lt;a href="https://github.com/AF83/node-serializer"&gt;serializer&lt;/a&gt;) is using the &lt;code&gt;crypto&lt;/code&gt; module from NodeJS. This is compiled against the NodeJS installation. The solution was, that is not sufficient to run both version on 0.12.7 but also to remove the installed node modules and install them &lt;em&gt;new&lt;/em&gt; with version 0.12.7.&lt;/p&gt;</content><category term="nodejs"></category><category term="crypto"></category></entry><entry><title>ELM mixing HTML</title><link href="/elm-mixing-html.html" rel="alternate"></link><published>2015-07-27T00:00:00+02:00</published><updated>2015-07-27T00:00:00+02:00</updated><author><name>Joshy Cyriac</name></author><id>tag:None,2015-07-27:/elm-mixing-html.html</id><summary type="html">&lt;p&gt;JS set default value&lt;/p&gt;</summary><content type="html">&lt;p&gt;To have elm code inside of HTML you need to escape it&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;Html&lt;/span&gt; &lt;span class="n"&gt;exposing&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;li&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;Html.Attributes&lt;/span&gt; &lt;span class="n"&gt;exposing&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;{-|&lt;/span&gt;
+&lt;span class="cm"&gt;  Modified version of http://elm-lang.org/examples/unordered-list&lt;/span&gt;
+&lt;span class="cm"&gt;-}&lt;/span&gt;
+
+&lt;span class="nf"&gt;fruits&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;apples&amp;quot;&lt;/span&gt;
+         &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;oranges&amp;quot;&lt;/span&gt;
+         &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ananas&amp;quot;&lt;/span&gt;
+         &lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="nf"&gt;main&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt;
+  &lt;span class="n"&gt;ul&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;fruits-list&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;List&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;\&lt;/span&gt;&lt;span class="n"&gt;fruit&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;li&lt;/span&gt; &lt;span class="kt"&gt;[]&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="n"&gt;fruit&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="n"&gt;fruits&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="elm"></category></entry><entry><title>JS Parameter</title><link href="/js-parameter.html" rel="alternate"></link><published>2014-08-08T00:00:00+02:00</published><updated>2014-08-08T00:00:00+02:00</updated><author><name>Joshy Cyriac</name></author><id>tag:None,2014-08-08:/js-parameter.html</id><summary type="html">&lt;p&gt;JS set default value&lt;/p&gt;</summary><content type="html">&lt;p&gt;Quite a elegant way to set a value if no parameter has been given.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;counter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{};&lt;/span&gt;
+
+&lt;span class="nx"&gt;counter&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;setValue&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;counter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;value&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;};&lt;/span&gt;
+
+&lt;span class="nx"&gt;counter&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;setValue&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="nx"&gt;counter&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;setValue&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="js"></category></entry><entry><title>Scala function definitions</title><link href="/scala-function-definitions.html" rel="alternate"></link><published>2014-08-05T10:20:00+02:00</published><updated>2014-08-05T10:20:00+02:00</updated><author><name>Joshy Cyriac</name></author><id>tag:None,2014-08-05:/scala-function-definitions.html</id><summary type="html">&lt;p&gt;Function definitions&lt;/p&gt;</summary><content type="html">&lt;p&gt;Equivalent definitions of a function from A to B in Scala.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// A =&amp;gt; B&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;A&lt;/span&gt;, &lt;span class="kt"&gt;B&lt;/span&gt;&lt;span class="o"&gt;](&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="k"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;A&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="k"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;B&lt;/span&gt;
+
+&lt;span class="c1"&gt;// A =&amp;gt; B&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;A&lt;/span&gt;, &lt;span class="kt"&gt;B&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="k"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;A&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="scala"></category></entry></feed>
