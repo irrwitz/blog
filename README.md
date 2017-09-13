@@ -6,11 +6,11 @@ To create page run
 
 To serve run
 `python -m pelican.server`
-in the output directory 
+in the output directory
 
 ## publish to github
 ```
 pelican content -o output -s pelicanconf.py
 ghp-import output
-git push git@github.com:elemoine/elemoine.github.io.git gh-pages:master
+git push git@github.com:joshy/joshy.github.io.git gh-pages:master
 ```
