@@ -1,0 +1,24 @@
+Title: Oracle python driver
+Date: 2017-09-13
+Category: Programming
+Tags: python, oracle
+Authors: Joshy Cyriac
+
+Changing the running user of a systemd service stopped working. There were some
+lession to be learned:
+
+1. pip default install location is under %HOME%, so all installed libs needs
+ to be installed again
+
+2. db connection failed with
+  ```shell
+  cx_Oracle.DatabaseError: DPI-1047: Oracle Client library cannot be loaded: libclntsh.so: cannot open shared object file: No such file or director
+  ```
+
+   The previous user had in the .bashrc this snippet
+ `export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/oracle/12.1/client64/lib`
+ Adding this to the new users .bashrc didn't help. Finally the solution was to
+ create a file under `/etc/ld.so.conf.d` called `oracle.conf` with the single
+ entry `/usr/lib/oracle/12.1/client64/lib`. A `sudo ldconfig` and sudo `ldconfig -v`
+ verified that the shared libs are accessible. So db connection was up and
+ running again.
