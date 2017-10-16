@@ -3,7 +3,7 @@ Date: 2015-07-27
 Category: Programming
 Tags: elm
 Authors: Joshy Cyriac
-Summary: JS set default value
+Summary:
 
 
 To have elm code inside of HTML you need to escape it
